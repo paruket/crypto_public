@@ -45,10 +45,6 @@
         if (!ethereum.selectedAddress)
            return alert('no ethereum wallet linked');
 
-        // パラメータチェック
-        if (!data.index || !data.amount || !data.proof)
-           return alert('data is missing index or amount or proof')
-
 
         document.querySelector('.status').textContent = 'parse';
         // JSONパース
@@ -60,7 +56,10 @@
           alert('error occurred while parsing data blob');
           console.log(e);
         }
-        
+
+        // パラメータチェック
+        if (!data.index || !data.amount || !data.proof)
+           return alert('data is missing index or amount or proof')
 
 
         // 送信
