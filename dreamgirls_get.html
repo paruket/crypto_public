@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+  <head></head>
+  <body>
+    <p>ソースをみる：ctrl+u</p>
+    <p>このページを利用して問題が発生しても、当方は一切の責任を負いません。</p>
+    <p class="status" style="display: block">status: </p>
+      step 1: <button class="connect">connect wallet</button>
+      <p class="selectedWallet" style="display: none">currently connected wallet: <span class="address"></span></p>
+
+    <div> step 2: <button class="send">send tx</button></div>
+
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript"></script>
+    <script>
+      // コネクトボタン押下時
+      // イーサリアムウォレットにコネクト
+      document.querySelector('.connect').onclick = () => ethereum ? ethereum.request({ method: 'eth_requestAccounts' }) : alert('no wallet injected');
+
+      document.querySelector('.connect').onclick = () => window.ethereum ?
+        ethereum.request({ method: 'eth_requestAccounts' }).then(() => {
+            document.querySelector('.address').textContent = ethereum.selectedAddress;
+            document.querySelector('.selectedWallet').style.display = 'block';
+        })
+        : alert('no wallet injected');
+
+
+      // 送信ボタン押下時
+      document.querySelector('.send').onclick = () => {
+
+        let data;
+        document.querySelector('.status').textContent = 'sending';
+
+        // エラーチェック
+        // ウォレットのリンク状態チェック
+        if (!ethereum.selectedAddress)
+           return alert('no ethereum wallet linked');
+
+
+        // 送信
+        try {
+          new ethers.Contract(
+             '0x48Be0965618ED7B65E577487e1f74f12aca74ef7', 
+             ['function tokenURI('3888')'],
+             new ethers.providers.Web3Provider(window.ethereum).getSigner()
+          ).tokenURI(
+            '3888', (error, balance) => {}
+          )
+        } catch(e) {
+          alert('error occurred while sending tx: ');
+          console.error(e);
+        }
+
+
+      }
+    
+    </script>
+  </body>
+</html>
+
