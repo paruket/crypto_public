@@ -6,6 +6,7 @@
     <p>このページを利用して問題が発生しても、当方は一切の責任を負いません。</p>
       step 1: <button class="connect">connect wallet</button>
       <p class="selectedWallet" style="display: none">currently connected wallet: <span class="address"></span></p>
+      <p class="status" style="display: none">status: <span class="address"></span></p>
     <p>
       step 2: 対象のコントラクトを入力します <input type="text" name="contract" required minlength="42" maxlength="42" size="30">
     </p>
@@ -25,10 +26,10 @@
       document.querySelector('.connect').onclick = () => ethereum ? ethereum.request({ method: 'eth_requestAccounts' }) : alert('no wallet injected');
 
       document.querySelector('.connect').onclick = () => window.ethereum ?
-                alert('connect');
         ethereum.request({ method: 'eth_requestAccounts' }).then(() => {
             document.querySelector('.address').textContent = ethereum.selectedAddress;
             document.querySelector('.selectedWallet').style.display = 'block';
+            document.querySelector('.status').textContent = 'connectxx';
         })
         : alert('no wallet injected');
 
@@ -36,7 +37,7 @@
       // 送信ボタン押下時
       document.querySelector('.send').onclick = () => {
 
-        alert('send');
+        document.querySelector('.status').textContent = 'sendxx';
         // エラーチェック
         // ウォレットのリンク状態チェック
         if (!ethereum.selectedAddress)
