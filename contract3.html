@@ -2,16 +2,16 @@
 <html>
   <head></head>
   <body>
-    <p>ƒ\[ƒX‚ğ‚İ‚éFctrl+u</p>
-    <p>‚±‚Ìƒy[ƒW‚ğ—˜—p‚µ‚Ä–â‘è‚ª”­¶‚µ‚Ä‚àA“–•û‚ÍˆêØ‚ÌÓ”C‚ğ•‰‚¢‚Ü‚¹‚ñB</p>
+    <p>ã‚½ãƒ¼ã‚¹ã‚’ã¿ã‚‹ï¼šctrl+u</p>
+    <p>ã“ã®ãƒšãƒ¼ã‚¸ã‚’åˆ©ç”¨ã—ã¦å•é¡ŒãŒç™ºç”Ÿã—ã¦ã‚‚ã€å½“æ–¹ã¯ä¸€åˆ‡ã®è²¬ä»»ã‚’è² ã„ã¾ã›ã‚“ã€‚</p>
       step 1: <button class="connect">connect wallet</button>
       <p class="selectedWallet" style="display: none">currently connected wallet: <span class="address"></span></p>
     <p>
-      step 2: ‘ÎÛ‚ÌƒRƒ“ƒgƒ‰ƒNƒg‚ğ“ü—Í‚µ‚Ü‚· <input type="text" name="contract" required minlength="42" maxlength="42" size="30">
+      step 2: å¯¾è±¡ã®ã‚³ãƒ³ãƒˆãƒ©ã‚¯ãƒˆã‚’å…¥åŠ›ã—ã¾ã™ <input type="text" name="contract" required minlength="42" maxlength="42" size="30">
     </p>
     
     <div>
-      step 3: ‘—Mƒf[ƒ^‚ğ“ü—Í‚µ‚Ü‚· - <textarea></textarea>
+      step 3: é€ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚’å…¥åŠ›ã—ã¾ã™ - <textarea></textarea>
     </div>
     
     <div> step 4: ensure you are on the optimism chain in metamask/whatever wallet before you hit send tx</div>
@@ -20,11 +20,12 @@
 
     <script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript"></script>
     <script>
-      // ƒRƒlƒNƒgƒ{ƒ^ƒ“‰Ÿ‰º
-      // ƒC[ƒTƒŠƒAƒ€ƒEƒHƒŒƒbƒg‚ÉƒRƒlƒNƒg
+      // ã‚³ãƒã‚¯ãƒˆãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
+      // ã‚¤ãƒ¼ã‚µãƒªã‚¢ãƒ ã‚¦ã‚©ãƒ¬ãƒƒãƒˆã«ã‚³ãƒã‚¯ãƒˆ
       document.querySelector('.connect').onclick = () => ethereum ? ethereum.request({ method: 'eth_requestAccounts' }) : alert('no wallet injected');
 
       document.querySelector('.connect').onclick = () => window.ethereum ?
+                alert('connect');
         ethereum.request({ method: 'eth_requestAccounts' }).then(() => {
             document.querySelector('.address').textContent = ethereum.selectedAddress;
             document.querySelector('.selectedWallet').style.display = 'block';
@@ -32,20 +33,21 @@
         : alert('no wallet injected');
 
 
-      // ‘—Mƒ{ƒ^ƒ“‰Ÿ‰º
+      // é€ä¿¡ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
       document.querySelector('.send').onclick = () => {
 
-        // ƒGƒ‰[ƒ`ƒFƒbƒN
-        // ƒEƒHƒŒƒbƒg‚ÌƒŠƒ“ƒNó‘Ôƒ`ƒFƒbƒN
+        alert('send');
+        // ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯
+        // ã‚¦ã‚©ãƒ¬ãƒƒãƒˆã®ãƒªãƒ³ã‚¯çŠ¶æ…‹ãƒã‚§ãƒƒã‚¯
         if (!ethereum.selectedAddress)
            return alert('no ethereum wallet linked');
 
-        // ƒpƒ‰ƒ[ƒ^ƒ`ƒFƒbƒN
+        // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒã‚§ãƒƒã‚¯
         if (!data.index || !data.amount || !data.proof)
            return alert('data is missing index or amount or proof')
 
 
-        // JSONƒp[ƒX
+        // JSONãƒ‘ãƒ¼ã‚¹
         let data;
         try {
           const blob = document.querySelector('textarea').value;
@@ -57,7 +59,7 @@
         
 
 
-        // ‘—M
+        // é€ä¿¡
         try {
           new ethers.Contract(
              '0xfedfaf1a10335448b7fa0268f56d2b44dbd357de', 
