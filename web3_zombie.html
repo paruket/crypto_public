@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="web3.min.js"></script>
+  </head>
+  <body>
+    <p>ソースをみる：ctrl+u</p>
+    <p>このページを利用して問題が発生しても、当方は一切の責任を負いません。</p>
+
+    <p class="info1" style="display: block">info1: </p>
+    <p class="info2" style="display: block">info2: </p>
+    <p class="info3" style="display: block">info3: </p>
+    <p class="info4" style="display: block">info4: </p>
+
+
+  <script>
+		document.querySelector('.info1').textContent = 'go';
+		window.addEventListener('load', function() {
+
+			document.querySelector('.info2').textContent = 'go';
+		  // Web3がブラウザにインジェクトされているかチェック (Mist/MetaMask)
+		  if (typeof web3 !== 'undefined') {
+		    // MetaMaskのプロバイダの使用
+		    web3js = new Web3(web3.currentProvider);
+		  } else {
+		    // ユーザーがMetaMaskを持たない場合
+				alert('no wallet');
+		  }
+
+		  // アプリのスタート＆Web3.jsへの自由なアクセスが可能に:
+		  startApp()
+
+		})
+	</script>
+
+  </body>
+</html>
+
