@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+  <head></head>
+  <body>
+    <p>ソースをみる：ctrl+u</p>
+    <p>このページを利用して問題が発生しても、当方は一切の責任を負いません。</p>
+    <p class="status" style="display: block">status: </p>
+
+      step 1: <button class="connect">connect wallet</button>
+      <p class="selectedWallet" style="display: none">currently connected wallet: <span class="address"></span></p>
+
+    <script>
+	alert('test');
+    </script>
+
+
+    <script>
+	// web3パッケージをインポートし、web3インスタンスを作成する。
+	const Web3 = require('web3');
+	const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+	// アカウントアドレスを取得する
+	web3.eth.getAccounts((error, result) => {
+	    console.log('result: ', result);
+	});
+
+	// ブロック数を取得する
+	web3.eth.getBlockNumber((error, result) => {
+	    console.log(result);
+	});
+    </script>
+
+  </body>
+</html>
+
