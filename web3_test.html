@@ -1,17 +1,23 @@
 <!DOCTYPE HTML>
 <html>
-  <head></head>
+  <head>
+    <script>
+	alert('test2');
+    </script>
+
+  </head>
   <body>
     <p>ソースをみる：ctrl+u</p>
     <p>このページを利用して問題が発生しても、当方は一切の責任を負いません。</p>
-    <p class="status" style="display: block">status: </p>
 
-      step 1: <button class="connect">connect wallet</button>
-      <p class="selectedWallet" style="display: none">currently connected wallet: <span class="address"></span></p>
+    <p class="info1" style="display: block">info1: </p>
+    <p class="info2" style="display: block">info2: </p>
+    <p class="info3" style="display: block">info3: </p>
+    <p class="info4" style="display: block">info4: </p>
 
-    <script>
-	alert('test');
-    </script>
+
+    step 1: <button class="connect">connect wallet</button>
+    <p class="selectedWallet" style="display: none">currently connected wallet: <span class="address"></span></p>
 
 
     <script>
@@ -22,11 +28,13 @@
 	// アカウントアドレスを取得する
 	web3.eth.getAccounts((error, result) => {
 	    console.log('result: ', result);
+            document.querySelector('.info1').textContent = 'xxxx';
 	});
 
 	// ブロック数を取得する
 	web3.eth.getBlockNumber((error, result) => {
 	    console.log(result);
+            document.querySelector('.info2').textContent = 'xxxx';
 	});
     </script>
 
