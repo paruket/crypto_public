@@ -1,10 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <script>
-	alert('test2');
-    </script>
-
+	<script language="javascript" type="text/javascript" src="web3.min.js"></script>
   </head>
   <body>
     <p>ソースをみる：ctrl+u</p>
@@ -28,13 +25,13 @@
 	// アカウントアドレスを取得する
 	web3.eth.getAccounts((error, result) => {
 	    console.log('result: ', result);
-            document.querySelector('.info1').textContent = 'xxxx';
+            document.querySelector('.info1').textContent = result;
 	});
 
 	// ブロック数を取得する
 	web3.eth.getBlockNumber((error, result) => {
 	    console.log(result);
-            document.querySelector('.info2').textContent = 'xxxx';
+            document.querySelector('.info2').textContent = result;
 	});
     </script>
 
