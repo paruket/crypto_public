@@ -17,36 +17,35 @@
     <p class="selectedWallet" style="display: none">currently connected wallet: <span class="address"></span></p>
 
 
-		var walletAddress = '0x3FA839617dFB47A877851081755830715e4fCDA0';
-
     <script>
 
+			// web3パッケージをインポートし、web3インスタンスを作成する。
+			// 	const Web3 = require('web3');
+			const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
-	// web3パッケージをインポートし、web3インスタンスを作成する。
-	// 	const Web3 = require('web3');
-	const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-
-	// トランザクションの内容を取得する。
-	web3.eth.getTransaction('0x26d07b711961a06eb9f07eefe98895100c647c3972247c40dfc81f4458dd42fa')
-	.then(console.log);
+			// トランザクションの内容を取得する。
+			web3.eth.getTransaction('0x26d07b711961a06eb9f07eefe98895100c647c3972247c40dfc81f4458dd42fa')
+			.then(console.log);
 
 
-	// 残高を取得する
-	web3.eth.getBalance(walletAddress, (error, balance) => {
-		console.log('balance:' + balance);
-	});
+			// 残高を取得する
+		  var walletAddress = '0x3FA839617dFB47A877851081755830715e4fCDA0';
+			web3.eth.getBalance(walletAddress, (error, balance) => {
+				console.log('balance:' + balance);
+			});
 
-	// アカウントアドレスを取得する
-	web3.eth.getAccounts((error, result) => {
-	    console.log('result: ', result);
-            document.querySelector('.info1').textContent = result;
-	});
+			// アカウントアドレスを取得する
+			web3.eth.getAccounts((error, result) => {
+			    console.log('result: ', result);
+		            document.querySelector('.info1').textContent = result;
+			});
 
-	// ブロック数を取得する
-	web3.eth.getBlockNumber((error, result) => {
-	    console.log(result);
-            document.querySelector('.info2').textContent = result;
-	});
+			// ブロック数を取得する
+			web3.eth.getBlockNumber((error, result) => {
+			    console.log(result);
+		            document.querySelector('.info2').textContent = result;
+			});
+
     </script>
 
   </body>
