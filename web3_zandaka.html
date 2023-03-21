@@ -21,7 +21,7 @@
       if(walletAddress != "") {
         web3.eth.getBalance(walletAddress, (error, balance) => {
           console.log(balance);
-          document.getElementById('result').innerText = web3.fromWei(balance, 'ether');
+          //document.getElementById('result').innerText = web3.fromWei(balance, 'ether');
         });
       }
     }
